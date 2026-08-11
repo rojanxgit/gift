@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎁 A Gift For You</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#141e30,#243b55);color:#fff;text-align:center}.card{width:90%;max-width:440px;padding:36px 24px;background:rgba(255,255,255,.1);border-radius:22px;backdrop-filter:blur(10px);box-shadow:0 12px 45px rgba(0,0,0,.4)}.gift{font-size:90px;animation:bounce 1.4s infinite}h1{font-size:30px;margin:12px 0}p{color:#ddd;font-size:17px;line-height:1.5}button{margin-top:20px;padding:15px 34px;border:0;border-radius:50px;font-size:18px;font-weight:bold;cursor:pointer;background:#fff;color:#243b55;transition:.2s}button:hover{transform:scale(1.06)}#videoBox{display:none}video{width:100%;border-radius:14px;margin-top:20px;max-height:70vh}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="start">
+    <div class="gift">🎁</div>
+    <h1>A Special Gift For You</h1>
+    <p>Someone sent you a little surprise 👀<br>Tap below to open it.</p>
+    <button onclick="openGift()">🎁 OPEN GIFT</button>
+  </div>
+  <div id="videoBox">
+    <h1>🎁 Your Gift</h1>
+    <video id="giftVideo" controls playsinline preload="auto">
+      <source src="https://cdn.mtdv.me/video/chipi_bk.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+  </div>
+</div>
+<script>
+function openGift(){
+  document.getElementById('start').style.display='none';
+  document.getElementById('videoBox').style.display='block';
+  const video=document.getElementById('giftVideo');
+  video.play().catch(()=>{});
+}
+</script>
+</body>
+</html>
