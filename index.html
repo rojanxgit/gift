@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎁 A Gift For You</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🎁 A Little Surprise</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#141e30,#243b55);color:#fff;text-align:center}.card{width:90%;max-width:440px;padding:36px 24px;background:rgba(255,255,255,.1);border-radius:22px;backdrop-filter:blur(10px);box-shadow:0 12px 45px rgba(0,0,0,.4)}.gift{font-size:90px;animation:bounce 1.4s infinite}h1{font-size:30px;margin:12px 0}p{color:#ddd;font-size:17px;line-height:1.5}button{margin-top:20px;padding:15px 34px;border:0;border-radius:50px;font-size:18px;font-weight:bold;cursor:pointer;background:#fff;color:#243b55;transition:.2s}button:hover{transform:scale(1.06)}#videoBox{display:none}video{width:100%;border-radius:14px;margin-top:20px;max-height:70vh}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 50% 38%,#292929 0,#111 48%,#050505 100%);color:#fff}.page{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}.glow{position:absolute;width:330px;height:330px;border-radius:50%;background:rgba(255,255,255,.07);filter:blur(30px);animation:pulse 2.8s infinite}.content{text-align:center;position:relative;z-index:2;width:min(92%,520px);padding:30px 20px}.gift-wrap{width:180px;height:180px;margin:0 auto 28px;position:relative;animation:float 2.4s ease-in-out infinite}.gift{position:absolute;left:20px;top:45px;width:140px;height:105px;background:linear-gradient(145deg,#ff5b67,#d81f35);border-radius:8px 8px 14px 14px;box-shadow:0 18px 35px rgba(0,0,0,.5)}.gift:before{content:"";position:absolute;left:58px;top:0;width:25px;height:105px;background:#ffd65a}.gift:after{content:"";position:absolute;left:0;top:35px;width:140px;height:25px;background:#ffd65a}.lid{position:absolute;left:12px;top:30px;width:156px;height:30px;background:#ee3348;border-radius:7px;box-shadow:0 5px 12px rgba(0,0,0,.35);z-index:2}.bow{position:absolute;left:69px;top:5px;width:42px;height:42px;z-index:3}.bow:before,.bow:after{content:"";position:absolute;width:35px;height:24px;border:8px solid #ffd65a;border-radius:50% 50% 45% 45%;top:3px}.bow:before{left:-22px;transform:rotate(25deg)}.bow:after{right:-22px;transform:rotate(-25deg)}h1{font-size:clamp(28px,7vw,42px);margin:0 0 12px;letter-spacing:-1px}p{margin:0 auto;color:#d4d4d4;font-size:17px;line-height:1.55;max-width:400px}.open{margin-top:28px;padding:16px 34px;border:0;border-radius:999px;background:#fff;color:#111;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.35);transition:.2s}.open:hover{transform:scale(1.05)}.open:active{transform:scale(.97)}#videoScreen{display:none;position:absolute;inset:0;background:#000;z-index:10;align-items:center;justify-content:center}.video-frame{width:min(100%,900px);height:100%;display:flex;align-items:center;justify-content:center;position:relative}video{width:100%;max-height:100%;object-fit:contain;background:#000}.hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:13px;color:#aaa;background:rgba(0,0,0,.55);padding:7px 12px;border-radius:20px;pointer-events:none;transition:opacity .5s}.fade{animation:fade .65s ease forwards}@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-13px) rotate(1deg)}}@keyframes pulse{0%,100%{transform:scale(.9);opacity:.45}50%{transform:scale(1.1);opacity:.8}}@keyframes fade{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
-<div class="card">
-  <div id="start">
-    <div class="gift">🎁</div>
-    <h1>A Special Gift For You</h1>
-    <p>Someone sent you a little surprise 👀<br>Tap below to open it.</p>
-    <button onclick="openGift()">🎁 OPEN GIFT</button>
-  </div>
-  <div id="videoBox">
-    <h1>🎁 Your Gift</h1>
-    <video id="giftVideo" controls playsinline preload="auto">
-      <source src="https://cdn.mtdv.me/video/chipi_bk.mp4" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  </div>
+<div class="page" id="landing">
+<div class="glow"></div>
+<div class="content">
+<div class="gift-wrap"><div class="bow"></div><div class="lid"></div><div class="gift"></div></div>
+<h1>A Little Surprise 🎁</h1>
+<p>Someone has sent you a special gift.<br>Tap below to open it.</p>
+<button class="open" onclick="openGift()">OPEN GIFT</button>
+</div>
+</div>
+<div id="videoScreen">
+<div class="video-frame">
+<video id="giftVideo" playsinline controls preload="auto">
+<source src="https://cdn.mtdv.me/video/chipi_bk.mp4" type="video/mp4">
+</video>
+<div class="hint" id="hint">Tap the screen for controls</div>
+</div>
 </div>
 <script>
 function openGift(){
-  document.getElementById('start').style.display='none';
-  document.getElementById('videoBox').style.display='block';
-  const video=document.getElementById('giftVideo');
-  video.play().catch(()=>{});
+ const landing=document.getElementById('landing'),screen=document.getElementById('videoScreen'),video=document.getElementById('giftVideo');
+ landing.style.display='none';screen.style.display='flex';screen.classList.add('fade');
+ video.currentTime=0;video.play().catch(()=>{});
+ setTimeout(()=>document.getElementById('hint').style.opacity='0',2500);
 }
 </script>
 </body>
